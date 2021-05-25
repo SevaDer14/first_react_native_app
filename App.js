@@ -9,9 +9,9 @@ const Stack = createStackNavigator();
 const App = () => {
   const options = {
     headerStyle: {
-      backgroundColor: '#0F52BA',
+      backgroundColor: '#FDC12A',
     },
-    headerTintColor: '#fff',
+    headerTintColor: '#000',
     headerTitleStyle: {
       fontSize: 24,
     },
@@ -25,16 +25,14 @@ const App = () => {
     <NavigationContainer>
       <Stack.Navigator>
         <Stack.Screen
-          name={'My App'}
+          name={'FAKEST NEWS'}
           component={FirstScreen}
           options={() => options}
         />
         <Stack.Screen 
         name='Second Screen'
         component={SecondScreen}
-        options={() => ({
-          title: 'Go Back'
-        })}
+        options={() => options}
          />
       </Stack.Navigator>
     </NavigationContainer>
@@ -46,7 +44,7 @@ export default App;
 const styles = StyleSheet.create({
   text: {
     marginRight: '30px',
-    color: '#fff',
+    color: '#000',
     fontSize: 12,
   },
 });
