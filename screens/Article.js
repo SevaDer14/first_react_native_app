@@ -15,8 +15,8 @@ const Article = ({ article, navigation }) => {
         navigation.navigate('Second Screen', { article: article });
       }}>
       <Image source={{ uri: article.image }} style={styles.image} />
-      <View style={styles.card}>
-        <Text style={styles.title}>{article.title}</Text>
+      <View testID={`article-${article.id}`} style={styles.card}>
+        <Text testID='title' style={styles.title}>{article.title}</Text>
       </View>
     </TouchableOpacity>
   );
