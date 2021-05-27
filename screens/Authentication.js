@@ -6,17 +6,21 @@ import Auth from '../modules/auth';
 const Authentication = ({ navigation }) => {
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
-  const [message, setMessage] = useState();
-
+  const [message, setMessage] = useState()
   const auth = new Auth({ host: 'https://fakest-newzz.herokuapp.com/api' });
   const authenticateUser = async () => {
-    const response = await auth.signIn(email, password);
-    setMessage(`Welcome ${response.data.first_name}`);
-    navigation.navigate('FAKEST NEWS');
+    auth
+      .signIn(email, password)
+      .then(response => {
+        navigation.navigate('FAKEST NEWS');
+      })
+      .catch((error) => {
+        setMessage(error.response.data.errors[0])
+      });
   };
 
   return (
-    <View>
+    <View>      
       <Text>Login:</Text>
       <TextInput
         style={styles.input}
@@ -35,6 +39,7 @@ const Authentication = ({ navigation }) => {
         onPress={() => authenticateUser()}
         title='Login'
       />
+      {message && <Text>{message}</Text>}
     </View>
   );
 };
